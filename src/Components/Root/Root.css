@@ -1,0 +1,11 @@
+#root{
+    display: flex;
+    width: 100%;
+    
+}
+
+.grayBar{
+    height: 100lvh;
+    width: 20%;
+    background-image: url("./resouces/body_bg.png");
+}
