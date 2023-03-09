@@ -1,5 +1,5 @@
 
-async function getApiInfo(id){
+function getApiInfo(id){
 
     const baseUrl = 'https://pokeapi.co/api/v2/';
 
@@ -8,10 +8,11 @@ async function getApiInfo(id){
     let results;
     
     try{
-        const response = await fetch(`${baseUrl}${pokemonPath}/${id}`)
+        const response = fetch(`${baseUrl}${pokemonPath}/${id}`)
+        .then()
         
         if(response.ok){
-            let jsonResponse = await response.json();
+            let jsonResponse = response.json();
             results = jsonResponse
 
         }
