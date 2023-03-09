@@ -4,23 +4,42 @@ import GaleryPokemon from "../GaleryPokemon/GaleryPokemon";
 
 export default function Galery () {
 
-    // const [pokemon, setPokemon] = useState();
-    const [pokemonList, setPokemonList] = useState();
+    const [pokemon, setPokemon] = useState([]);
+    const [pokemonData, setPokemonData] = useState();
     // const [id, setId] = useState(1);
 
     
 
     useEffect(() =>{
         async function pkm(){
-            let pokeData = await getApiInfo()
-            // for(let pokemon of pokeData){
-            //     setPokemonList([...pokemonList, pokemon])
-            
-            // }
-            setPokemonList(pokeData.results);
+            let pokeData = await getApiInfo();
+            let pokeList = [];
+            setPokemonData(pokeData.results);
+            for(let data of pokemonData) {
+                try{
+                    let moster = await fetch(data.url)
+                    if(moster.ok){
+                        let jsonResponse = await moster.json();
+                        pokeList.push(jsonResponse);
+                        setPokemon(pokeList)
+                        
+                    }
+
+
+                    
+                }catch(error){
+                    console.log(error)
+                }
+                
+            }
+            console.log(pokemon)
     }pkm() }, [])
 
-    
+    // const populate = () => {
+    //     pokemon.map((pkm) =>{
+    //         return <h1>{pkm.name}</h1>
+    //     })
+    // }
     
     
     
@@ -28,17 +47,16 @@ export default function Galery () {
     return(
         <main>
             <div className="galery-card">
-                {
-                    pokemonList.map((pokemon) =>{
-                        return <h1>{pokemon.name}</h1>
-                    }
-                        
-                    
-                        
+            
+                {pokemon.map((pkm) =>{
+                    return (
+                        <div>
+                            <h1>{pkm.name}</h1>
+                            <h2>{pkm.weight}</h2>
+                        </div>
                     )
-                }
-                
-                
+                    
+                })}
 
             </div>
             
