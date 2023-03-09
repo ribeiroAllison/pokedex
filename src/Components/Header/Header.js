@@ -1,9 +1,12 @@
+import Galery from "../Galery/Galery"
 import "./Header.css"
+
 
 export default function Header (){
 
     return(
-        <header>
+        <div>
+            <header>
             <div className="header-content" id="top-header">
                 <h1>Pokédex</h1>
             </div>
@@ -12,7 +15,7 @@ export default function Header (){
                     <label for="searchBox">Name or Number</label>
                     <div id="input-ctn">
                         <input type="text" name="searchBox"/>
-                        <img src={require('./resources/input#search.png')}/>
+                        <img alt= "research button" src={require('./resources/input#search.png')}/>
                     </div>
                     
                     <h3>Use the Advanced Search to explore Pokémon by type, weakness, Ability, and more!</h3>
@@ -28,5 +31,9 @@ export default function Header (){
 
             </div>
         </header>
+        <Galery />
+        </div>
+       
+        
     )
 }

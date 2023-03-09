@@ -5,7 +5,7 @@
 }
 
 .grayBar{
-    height: 100lvh;
-    width: 20%;
+    height: 100%;
+    width: 10%;
     background-image: url("./resouces/body_bg.png");
 }

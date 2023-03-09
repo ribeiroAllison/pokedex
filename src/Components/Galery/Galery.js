@@ -1,62 +1,57 @@
 import { useEffect, useState } from "react"
 import getApiInfo from "../../Resources/support"
-import GaleryPokemon from "../GaleryPokemon/GaleryPokemon";
+import "./Galery.css"
+
 
 export default function Galery () {
 
-    const [pokemon, setPokemon] = useState([]);
-    const [pokemonData, setPokemonData] = useState();
-    // const [id, setId] = useState(1);
 
+    const [pokemonData, setPokemonData] = useState();
+    
     
 
     useEffect(() =>{
-        async function pkm(){
+        async function pkmData(){
             let pokeData = await getApiInfo();
-            let pokeList = [];
-            setPokemonData(pokeData.results);
-            for(let data of pokemonData) {
-                try{
-                    let moster = await fetch(data.url)
-                    if(moster.ok){
-                        let jsonResponse = await moster.json();
-                        pokeList.push(jsonResponse);
-                        setPokemon(pokeList)
-                        
-                    }
+            setPokemonData(pokeData);
+            
+            
+    }pkmData() }, [])
 
-
-                    
-                }catch(error){
-                    console.log(error)
-                }
-                
-            }
-            console.log(pokemon)
-    }pkm() }, [])
-
-    // const populate = () => {
-    //     pokemon.map((pkm) =>{
-    //         return <h1>{pkm.name}</h1>
-    //     })
-    // }
-    
-    
+    function correctIdFormat (pkm){
+        let pokeId = '';
+        if(pkm.id < 10){
+            pokeId = `#000${pkm.id.toString()}`
+        }else if( pkm.id >=10 && pkm.id <100){
+            pokeId = `#00${pkm.id.toString()}`
+        } else if (pkm.id >=100 && pkm.id <1000){
+            pokeId = `#0${pkm.id.toString()}`
+        } else{
+            pokeId = `#${pkm.id.toString()}`
+        };
+        return pokeId;
+    };
     
     
     return(
         <main>
             <div className="galery-card">
             
-                {pokemon.map((pkm) =>{
-                    return (
-                        <div>
-                            <h1>{pkm.name}</h1>
-                            <h2>{pkm.weight}</h2>
-                        </div>
-                    )
+                {
                     
-                })}
+                    pokemonData?.map((pkm) =>{
+                        return(
+                            <div>
+                                <img alt="pokemon" src={pkm.sprites.other['official-artwork'].front_default}/>
+                                <h3>{correctIdFormat(pkm)}</h3>
+                                <h2>{pkm.name}</h2>
+                                {pkm.types.map((tp) => {
+                                    return <h2>{tp.type.name}</h2>
+                                })}
+                            </div>
+                        )
+                    })
+                }
 
             </div>
             
