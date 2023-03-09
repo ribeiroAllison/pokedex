@@ -1,0 +1,13 @@
+.galery-main{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.galery-card{
+    display: flex;
+    justify-content: space-around;
+}
+
+.galery-card img{
+    height: 150px;
+}

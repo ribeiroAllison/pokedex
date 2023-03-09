@@ -34,13 +34,14 @@ export default function Galery () {
     
     
     return(
-        <main>
-            <div className="galery-card">
+        <main className="galery-main">
             
-                {
-                    
-                    pokemonData?.map((pkm) =>{
-                        return(
+            
+            {
+                
+                pokemonData?.map((pkm) =>{
+                    return(
+                        <div className="galery-card">
                             <div>
                                 <img alt="pokemon" src={pkm.sprites.other['official-artwork'].front_default}/>
                                 <h3>{correctIdFormat(pkm)}</h3>
@@ -49,11 +50,13 @@ export default function Galery () {
                                     return <h2>{tp.type.name}</h2>
                                 })}
                             </div>
-                        )
-                    })
-                }
+                            
+                        </div>
+                    )
+                })
+            }
 
-            </div>
+            
             
         </main>
     )
