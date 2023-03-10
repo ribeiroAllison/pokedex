@@ -1,13 +1,41 @@
 .galery-main{
     display: flex;
     flex-wrap: wrap;
+    font-family: 'Roboto';
+    
 }
 
-.galery-card{
+.card-ctn{
     display: flex;
     justify-content: space-around;
+    margin: auto;
 }
 
-.galery-card img{
+.card-ctn img{
     height: 150px;
+    width: 150px;
+}
+
+.poke-card{
+    width: 250px;
+    background-color: rgb(245, 239, 232);
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.poke-card h3{
+    font-size: 15px;
+    color: rgb(129, 129, 129);
+}
+
+.poke-card h2{
+    font-size: 30px;
+}
+
+.type-ctr{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
 }

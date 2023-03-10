@@ -6,7 +6,7 @@ export default function Root(){
     return(
         <section id="root">
             <div className="grayBar"></div>
-            <Outlet />
+                <Outlet />
             <div className="grayBar"></div>
         </section>
     )

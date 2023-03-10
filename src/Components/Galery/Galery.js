@@ -41,14 +41,17 @@ export default function Galery () {
                 
                 pokemonData?.map((pkm) =>{
                     return(
-                        <div className="galery-card">
-                            <div>
+                        <div className="card-ctn">
+                            <div className="poke-card">
                                 <img alt="pokemon" src={pkm.sprites.other['official-artwork'].front_default}/>
                                 <h3>{correctIdFormat(pkm)}</h3>
                                 <h2>{pkm.name}</h2>
-                                {pkm.types.map((tp) => {
-                                    return <h2>{tp.type.name}</h2>
-                                })}
+                                <div className="type-ctr">
+                                    {pkm.types.map((tp) => {
+                                        return <h4>{tp.type.name}</h4>
+                                    })}
+                                </div>
+                                
                             </div>
                             
                         </div>
