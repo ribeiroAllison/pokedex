@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { Link } from "react-router-dom";
 import getApiInfo from "../../Resources/support"
 import "./Galery.css"
 
@@ -42,17 +43,17 @@ export default function Galery () {
                 pokemonData?.map((pkm) =>{
                     return(
                         <div className="card-ctn">
-                            <div className="poke-card">
+                            <Link to={`/${pkm.name}}`} className="poke-card">
                                 <img alt="pokemon" src={pkm.sprites.other['official-artwork'].front_default}/>
                                 <h3>{correctIdFormat(pkm)}</h3>
                                 <h2>{pkm.name}</h2>
                                 <div className="type-ctr">
                                     {pkm.types.map((tp) => {
-                                        return <h4>{tp.type.name}</h4>
+                                        return <h4 className={tp.type.name}>{tp.type.name}</h4>
                                     })}
                                 </div>
                                 
-                            </div>
+                            </Link>
                             
                         </div>
                     )

@@ -16,6 +16,8 @@
     width: 150px;
 }
 
+
+/* CARD SECTION */
 .poke-card{
     width: 250px;
     background-color: rgb(245, 239, 232);
@@ -23,19 +25,82 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-decoration: none;
 }
 
 .poke-card h3{
     font-size: 15px;
     color: rgb(129, 129, 129);
+    margin: 0;
+    
 }
 
 .poke-card h2{
     font-size: 30px;
+    color:rgb(26, 22, 22);
+    margin: 0;
+    
+    
 }
 
+.poke-card h4{
+    margin-top: 20px;
+    padding: 3px 0;
+}
+
+.poke-card:hover{
+    margin-bottom: 0;
+    transition: 0.3s;
+    
+}
+
+
+/* TYPE SECTION */
 .type-ctr{
     width: 100%;
     display: flex;
     justify-content: space-around;
+    color:rgb(26, 22, 22)
 }
+
+.type-ctr h4{
+    width: 70px;
+    text-align: center;
+    border-radius: 4px;
+    font-weight: 400;
+}
+
+.grass{
+    background-color: #9BCC50;
+}
+
+.poison{
+    background-color: #B97FC9;
+    color: white;
+}
+
+.fire{
+    background-color: #FD7D24;
+    color: white;
+}
+
+.flying{
+    background: linear-gradient(#3DC7EF, #3DC7EF 50%, #BDB9B8, #BDB9B8 50%);
+    
+}
+
+.water{
+    background-color: #4592c4;
+    color: white;
+}
+
+.bug{
+    background-color: #729F3F;
+    color: white;
+}
+
+.normal{
+    background-color: #A4ACAF;
+    
+}
+
