@@ -4,6 +4,7 @@ import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } 
 import Root from '../Root/Root';
 import Header from '../Header/Header';
 import getApiInfo from "../../Resources/support"
+import PokemonDetail from '../PokemonDetail/PokemonDetail';
 
 
 
@@ -24,11 +25,10 @@ function App() {
   createBrowserRouter(createRoutesFromElements(
     <Route path="/" element={<Root />} >
       <Route index element={ <Header pokemonData={pokemonData} setPokemonData={setPokemonData}/>} />
-    
-      
-      
-
+      <Route path="/:pokemon" element={<PokemonDetail pokemonData={pokemonData}/>}/>
     </Route>
+    
+    
   ))
 
   return (
