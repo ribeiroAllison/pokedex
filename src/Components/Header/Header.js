@@ -2,7 +2,7 @@ import Galery from "../Galery/Galery"
 import "./Header.css"
 
 
-export default function Header (){
+export default function Header (props){
 
     return(
         <div>
@@ -31,7 +31,7 @@ export default function Header (){
 
             </div>
         </header>
-        <Galery />
+        <Galery pokemonData={props.pokemonData} setPokemonData={props.setPokemonData}/>
         </div>
        
         

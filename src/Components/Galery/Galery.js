@@ -1,23 +1,11 @@
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom";
-import getApiInfo from "../../Resources/support"
 import "./Galery.css"
 
 
-export default function Galery () {
+export default function Galery (props) {
 
 
-    const [pokemonData, setPokemonData] = useState();
-    
-    
-
-    useEffect(() =>{
-        async function pkmData(){
-            let pokeData = await getApiInfo();
-            setPokemonData(pokeData);
-            
-            
-    }pkmData() }, [])
 
     function correctIdFormat (pkm){
         let pokeId = '';
@@ -39,8 +27,8 @@ export default function Galery () {
             
             
             {
-                
-                pokemonData?.map((pkm) =>{
+                !props.pokemonData ? <h1>Loading...</h1>:
+                props.pokemonData?.map((pkm) =>{
                     return(
                         <div className="card-ctn">
                             <Link to={`/${pkm.name}}`} className="poke-card">
