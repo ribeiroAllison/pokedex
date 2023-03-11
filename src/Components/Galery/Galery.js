@@ -67,7 +67,7 @@ export default function Galery (props) {
                 
             </div>
             <div id="load">
-                <button onClick={execute} id="load-button">More Pokémon!!</button>
+                <button onClick={execute} className="button" id="load-button">More Pokémon!!</button>
             </div>
             
         </main>

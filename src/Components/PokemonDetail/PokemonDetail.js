@@ -33,10 +33,16 @@ export default function(props) {
                         <div className="column-2 column">
                             <label for="base">Base Experience</label>
                             <p name="base">{targetPokemon.base_experience}</p>
-                            <label for="appears">First appeared in</label>
-                            <p name="appears">{targetPokemon.game_indices[0].version.name}</p>
+                            {targetPokemon.game_indices[0] &&
+                                <div id="first-appears">
+                                    <label for="appears">First appeared in</label>
+                                    <p name="appears">{targetPokemon.game_indices[0].version.name}</p>
+                                </div>
+
+                            }
+                            
                         </div>
-                    </div>
+                    </div> 
                     <div className="type-ctr" id="detail-type-ctr">
                         <p>Type </p>
                         <div className="types">
@@ -129,7 +135,7 @@ export default function(props) {
                 </div>
                 
             </div>
-            <button onClick={goBack} className="back-btn">Back</button>
+            <button onClick={goBack} className="button">Back</button>
         </section>
         
     )
