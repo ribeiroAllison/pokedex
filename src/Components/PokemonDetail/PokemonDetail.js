@@ -64,40 +64,67 @@ export default function(props) {
                             <img src={targetPokemon.sprites.back_default}/>
                             <figcaption>Default</figcaption>
                         </figure>
-                        <figure>
-                            { targetPokemon.sprites.front_female && <img src={targetPokemon.sprites.front_female}/>}
-                            { targetPokemon.sprites.front_female && <figcaption>♀️ Version</figcaption>}
-                        </figure>
-                        <figure>
-                            { targetPokemon.sprites.back_female && <img src={targetPokemon.sprites.back_female}/>}
-                            { targetPokemon.sprites.back_female && <figcaption>♀️ Version</figcaption>}
-                        </figure>
-                        <figure>
-                            { targetPokemon.sprites.front_shiny && <img src={targetPokemon.sprites.front_shiny}/>}
-                            { targetPokemon.sprites.front_shiny && <figcaption>Shiny</figcaption>}
-                        </figure>
-                        <figure>
-                            { targetPokemon.sprites.back_shiny && <img src={targetPokemon.sprites.back_shiny}/>}
-                            { targetPokemon.sprites.back_shiny && <figcaption>Shiny</figcaption>}
-                        </figure>
-                        <figure>
-                            { targetPokemon.sprites.front_shiny_female && <img src={targetPokemon.sprites.front_shiny_female}/>}
-                            { targetPokemon.sprites.front_shiny_female && <figcaption>♀️ Shiny</figcaption>}
-                        </figure>
-                        <figure>
-                            { targetPokemon.sprites.back_shiny_female && <img src={targetPokemon.sprites.back_shiny_female}/>}
-                            { targetPokemon.sprites.back_shiny_female && <figcaption>♀️ Shiny</figcaption>}
-                        </figure>
+
+                        {targetPokemon.sprites.front_female && 
+                            <figure>
+                                <img src={targetPokemon.sprites.front_female}/>
+                                <figcaption>♀️ Version</figcaption>
+                            </figure>
+                        
+                        }
+                        
+                        {targetPokemon.sprites.back_female &&
+                            <figure>
+                                <img src={targetPokemon.sprites.back_female}/>
+                                <figcaption>♀️ Version</figcaption>
+                            </figure>
+                        
+                        }
+
+                        {targetPokemon.sprites.front_shiny &&
+                            <figure>
+                                <img src={targetPokemon.sprites.front_shiny}/>
+                                <figcaption>Shiny</figcaption>
+                            </figure>
+                        }
+
+                        { targetPokemon.sprites.back_shiny &&
+                            <figure>
+                                <img src={targetPokemon.sprites.back_shiny}/>
+                                <figcaption>Shiny</figcaption>
+                            </figure>
+                        }
+
+                        { targetPokemon.sprites.front_shiny_female &&
+                            <figure>
+                                <img src={targetPokemon.sprites.front_shiny_female}/>
+                                <figcaption>♀️ Shiny</figcaption>
+                            </figure>
+                        }
+                        
+                        { targetPokemon.sprites.back_shiny_female &&
+                            <figure>
+                                <img src={targetPokemon.sprites.back_shiny_female}/>
+                                <figcaption>♀️ Shiny</figcaption>
+                            </figure>
+                        }
+                        
                     </div>
                 <div className="alternative-art">
-                    <figure>
-                        { targetPokemon.sprites.other.dream_world.front_default && <img src={targetPokemon.sprites.other.dream_world.front_default}/>}
-                        { targetPokemon.sprites.other.dream_world.front_default && <figcaption> Dream World </figcaption>}
-                    </figure>
-                    <figure>
-                        { targetPokemon.sprites.other['official-artwork'].front_shiny && <img src={targetPokemon.sprites.other['official-artwork'].front_shiny}/>}
-                        { targetPokemon.sprites.other['official-artwork'].front_shiny && <figcaption> Official Shiny Art</figcaption>}
-                    </figure>
+                    { targetPokemon.sprites.other.dream_world.front_default &&
+                        <figure>
+                            <img src={targetPokemon.sprites.other.dream_world.front_default}/>
+                            <figcaption> Dream World </figcaption>
+                        </figure>
+                    }
+
+                    { targetPokemon.sprites.other['official-artwork'].front_shiny &&
+                        <figure>
+                            <img src={targetPokemon.sprites.other['official-artwork'].front_shiny}/>
+                            <figcaption> Official Shiny Art</figcaption>
+                        </figure>
+                    }
+                    
                     
                 </div>
                 
