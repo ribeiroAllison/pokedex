@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom"
+import { useParams, Link } from "react-router-dom"
 import { capitalizeFirstLetter, correctIdFormat } from "../../Resources/support";
 import "./PokemonDetail.css"
 
@@ -48,21 +48,55 @@ export default function(props) {
             </div>
             <div className="art-galery">
                 <h2>Art Galery</h2>
-                <div>
-                    
-                    <div>
-                        <img src={targetPokemon.sprites.front_default}/>
-                        <img src={targetPokemon.sprites.back_default}/>
-                        { targetPokemon.sprites.front_female && <img src={targetPokemon.sprites.front_female}/>}
-                        { targetPokemon.sprites.back_female && <img src={targetPokemon.sprites.back_female}/>}
-                        { targetPokemon.sprites.front_shiny && <img src={targetPokemon.sprites.front_shiny}/>}
-                        { targetPokemon.sprites.back_shiny && <img src={targetPokemon.sprites.back_shiny}/>}
-                        { targetPokemon.sprites.front_shiny_female && <img src={targetPokemon.sprites.front_shiny_female}/>}
-                        { targetPokemon.sprites.back_shiny_female && <img src={targetPokemon.sprites.back_shiny_female}/>}
+
+                    <div className="art-imgs">
+                        <figure>
+                            <img src={targetPokemon.sprites.front_default} />
+                            <figcaption>Default</figcaption>
+                        </figure>
+                        <figure>
+                            <img src={targetPokemon.sprites.back_default}/>
+                            <figcaption>Default</figcaption>
+                        </figure>
+                        <figure>
+                            { targetPokemon.sprites.front_female && <img src={targetPokemon.sprites.front_female}/>}
+                            { targetPokemon.sprites.front_female && <figcaption>♀️ Version</figcaption>}
+                        </figure>
+                        <figure>
+                            { targetPokemon.sprites.back_female && <img src={targetPokemon.sprites.back_female}/>}
+                            { targetPokemon.sprites.back_female && <figcaption>♀️ Version</figcaption>}
+                        </figure>
+                        <figure>
+                            { targetPokemon.sprites.front_shiny && <img src={targetPokemon.sprites.front_shiny}/>}
+                            { targetPokemon.sprites.front_shiny && <figcaption>Shiny</figcaption>}
+                        </figure>
+                        <figure>
+                            { targetPokemon.sprites.back_shiny && <img src={targetPokemon.sprites.back_shiny}/>}
+                            { targetPokemon.sprites.back_shiny && <figcaption>Shiny</figcaption>}
+                        </figure>
+                        <figure>
+                            { targetPokemon.sprites.front_shiny_female && <img src={targetPokemon.sprites.front_shiny_female}/>}
+                            { targetPokemon.sprites.front_shiny_female && <figcaption>♀️ Shiny</figcaption>}
+                        </figure>
+                        <figure>
+                            { targetPokemon.sprites.back_shiny_female && <img src={targetPokemon.sprites.back_shiny_female}/>}
+                            { targetPokemon.sprites.back_shiny_female && <figcaption>♀️ Shiny</figcaption>}
+                        </figure>
                     </div>
+                <div className="alternative-art">
+                    <figure>
+                        { targetPokemon.sprites.other.dream_world.front_default && <img src={targetPokemon.sprites.other.dream_world.front_default}/>}
+                        { targetPokemon.sprites.other.dream_world.front_default && <figcaption> Dream World </figcaption>}
+                    </figure>
+                    <figure>
+                        { targetPokemon.sprites.other['official-artwork'].front_shiny && <img src={targetPokemon.sprites.other['official-artwork'].front_shiny}/>}
+                        { targetPokemon.sprites.other['official-artwork'].front_shiny && <figcaption> Official Shiny Art</figcaption>}
+                    </figure>
+                    
                 </div>
+                
             </div>
-            
+            <Link to="/" className="back-btn">Back</Link>
         </section>
         
     )

@@ -8,7 +8,7 @@
     align-items: center;
     
     width: 100%;
-    height: 100lvh;
+   
 }
 
 .detail-card h2{
@@ -66,3 +66,51 @@
     padding: 7px 0;
     
 }
+
+.art-galery{
+    background-color: antiquewhite;
+    margin: 10px 20px;
+    border-radius: 15px;
+}
+.art-galery h2{
+    text-align: center;
+    font-weight: 700;
+}
+
+.art-imgs{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.art-imgs figcaption{
+    text-align: center;
+    margin-top: -12px;
+}
+
+.alternative-art{
+    display: flex;
+    justify-content: space-around;
+}
+
+.alternative-art img{
+    height: 200px;
+}
+
+.alternative-art figcaption{
+    text-align: center;
+}
+
+.back-btn{
+    background-color: #30A7D7;
+    display: flex;
+    width: 150px;
+    height: 30px;
+    border: 4px solid rgb(5, 88, 84);
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    text-decoration: none;
+    color:white;
+}
+
