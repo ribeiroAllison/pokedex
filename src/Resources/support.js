@@ -80,6 +80,8 @@ export async function getNextPageURL(url){
     } catch(error){
         console.log(error)
     }
-    console.log(results)
+    
     return results
 }
+
+

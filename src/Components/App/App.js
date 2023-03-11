@@ -11,7 +11,7 @@ import PokemonDetail from '../PokemonDetail/PokemonDetail';
 
 function App() {
 
-  const [pokemonData, setPokemonData] = useState();
+  const [pokemonData, setPokemonData] = useState([]);
   const [nextPageURL, setNextPageURL] = useState('https://pokeapi.co/api/v2/pokemon');
 
   useEffect(() =>{
@@ -19,6 +19,8 @@ function App() {
         let pokeData = await getApiInfo(nextPageURL);
         setPokemonData(pokeData);
   }
+
+  
     async function nextPage(){
       let nextPage = await getNextPageURL(nextPageURL);
       setNextPageURL(nextPage)

@@ -1,14 +1,15 @@
 import { capitalizeFirstLetter, correctIdFormat } from "../../Resources/support";
 import { Link } from "react-router-dom";
-import getApiInfo, {getNextPageURL} from "../../Resources/support"
+import getApiInfo, { getNextPageURL } from "../../Resources/support"
 import "./Galery.css"
+import srcPath from "../../Resources/loading.gif"
 
 
 export default function Galery (props) {
 
 
     
-        async function pkmData(){
+        async function refreshPkmData(){
             let newList = props.pokemonData;
             let pokeData = await getApiInfo(props.nextPageURL);
             for(let index of pokeData){
@@ -16,18 +17,23 @@ export default function Galery (props) {
             }
             props.setPokemonData(newList);
         }
-        async function nextPage(){
+        async function refreshNextPage(){
             let nextPage = await getNextPageURL(props.nextPageURL);
             props.setNextPageURL(nextPage)
         }
 
         async function execute(){
-            await pkmData();
-            await nextPage();
+            const load = document.getElementById("load");
+            const button = document.getElementById("load-button")
+            const loading = document.createElement('img');
+            button.style.display = 'none'
+            loading.setAttribute('src', srcPath)
+            load.appendChild(loading)
+            await refreshPkmData();
+            await refreshNextPage();
+            load.removeChild(load.lastChild)
+            button.style.display = 'block'
         }
-
-    
-
 
     
     return(
@@ -60,7 +66,10 @@ export default function Galery (props) {
                 
                 
             </div>
-            <button onClick={execute}>More Pokémon!!</button>
+            <div id="load">
+                <button onClick={execute} id="load-button">More Pokémon!!</button>
+            </div>
+            
         </main>
     )
 }
