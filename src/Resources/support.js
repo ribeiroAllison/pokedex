@@ -1,15 +1,12 @@
 
-export default async function getApiInfo(){
+export default async function getApiInfo(url){
 
-    const baseUrl = 'https://pokeapi.co/api/v2/';
-
-    const pokemonPath = 'pokemon'
 
     let results;
     let pokeList = [];
     
     try{
-        const response = await fetch(`${baseUrl}${pokemonPath}`)
+        const response = await fetch(url)
         
         if(response.ok){
             let jsonResponse = await response.json();
@@ -60,3 +57,29 @@ export function correctIdFormat (pkm){
     };
     return pokeId;
 };
+
+
+export async function getNextPageURL(url){
+
+
+    let results;
+    
+    
+    try{
+        const response = await fetch(url)
+        
+        if(response.ok){
+            let jsonResponse = await response.json();
+            results = jsonResponse.next
+
+        };
+        
+
+
+
+    } catch(error){
+        console.log(error)
+    }
+    console.log(results)
+    return results
+}

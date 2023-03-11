@@ -31,7 +31,7 @@ export default function Header (props){
 
             </div>
         </header>
-        <Galery pokemonData={props.pokemonData} setPokemonData={props.setPokemonData}/>
+        <Galery pokemonData={props.pokemonData} setPokemonData={props.setPokemonData} nextPageURL={props.nextPageURL} setNextPageURL={props.setNextPageURL}/>
         </div>
        
         
