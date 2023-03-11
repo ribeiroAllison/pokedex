@@ -1,10 +1,16 @@
-import { useParams, Link } from "react-router-dom"
+import { useParams, Link, useNavigate } from "react-router-dom"
 import { capitalizeFirstLetter, correctIdFormat } from "../../Resources/support";
 import "./PokemonDetail.css"
 
 export default function(props) {
 
     let {pokemon} = useParams();
+    
+    const navigate = useNavigate()
+
+    function goBack(){
+        return navigate(-1);
+    }
 
     let paramsPokemonObj = props.pokemonData.filter(obj => obj.name === pokemon);
     let targetPokemon = paramsPokemonObj[0];
@@ -96,7 +102,7 @@ export default function(props) {
                 </div>
                 
             </div>
-            <Link to="/" className="back-btn">Back</Link>
+            <button onClick={goBack} className="back-btn">Back</button>
         </section>
         
     )

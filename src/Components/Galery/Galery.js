@@ -1,31 +1,34 @@
 import { capitalizeFirstLetter, correctIdFormat } from "../../Resources/support";
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
 import getApiInfo, {getNextPageURL} from "../../Resources/support"
 import "./Galery.css"
 
 
 export default function Galery (props) {
 
-    const[toggle, setToggle] = useState(false)
 
-    useEffect(() => {
+    
         async function pkmData(){
+            let newList = props.pokemonData;
             let pokeData = await getApiInfo(props.nextPageURL);
-            props.setPokemonData( pokeData);
+            for(let index of pokeData){
+                newList.push(index)
+            }
+            props.setPokemonData(newList);
         }
         async function nextPage(){
             let nextPage = await getNextPageURL(props.nextPageURL);
             props.setNextPageURL(nextPage)
         }
-        pkmData()
-        nextPage()
-    },[toggle])
+
+        async function execute(){
+            await pkmData();
+            await nextPage();
+        }
+
     
 
-function changeToggle(){
-    toggle ? setToggle(false) : setToggle(true)
-}
+
     
     return(
         <main>
@@ -57,7 +60,7 @@ function changeToggle(){
                 
                 
             </div>
-            <button onClick={changeToggle}>More Pokémon!!</button>
+            <button onClick={execute}>More Pokémon!!</button>
         </main>
     )
 }
