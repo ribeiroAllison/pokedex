@@ -127,3 +127,32 @@
     text-align: center;
 }
 
+@media only screen and (max-width: 480px){
+    .pokemon-detail{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .info-card{
+        width: 300px;
+    }
+
+    .art-galery{
+        width: 300px;
+        
+    }
+
+    .art-imgs{
+        justify-content: center;
+    }
+
+    .alternative-art{
+        
+        flex-direction: column;
+    }
+
+    .alternative-art img{
+        width: 200px;
+    }
+}
