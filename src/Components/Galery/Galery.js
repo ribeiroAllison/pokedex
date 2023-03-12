@@ -35,6 +35,11 @@ export default function Galery (props) {
             button.style.display = 'block'
         }
 
+        const style = {
+            width: "300px",
+            margin: "auto"
+        }
+
     
     return(
         <main>
@@ -42,7 +47,7 @@ export default function Galery (props) {
                 
                 
                 {
-                    !props.pokemonData ? <h1>Loading...</h1>:
+                    !props.pokemonData ? <img alt="running pikachu" src={srcPath} style={{width: "300px", margin: "auto"}}/>:
                     props.pokemonData?.map((pkm) =>{
                         return(
                             <div className="card-ctn">
@@ -67,7 +72,10 @@ export default function Galery (props) {
                 
             </div>
             <div id="load">
-                <button onClick={execute} className="button" id="load-button">More Pokémon!!</button>
+                {props.pokemonData  &&
+                    <button onClick={execute} className="button" id="load-button">More Pokémon!!</button>
+                }
+                
             </div>
             
         </main>
