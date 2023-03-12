@@ -13,6 +13,7 @@ function App() {
 
   const [pokemonData, setPokemonData] = useState();
   const [nextPageURL, setNextPageURL] = useState('https://pokeapi.co/api/v2/pokemon');
+  const [found, setFound] = useState('none')
 
   useEffect(() =>{
     async function pkmData(){
@@ -33,8 +34,8 @@ function App() {
   const router =
   createBrowserRouter(createRoutesFromElements(
     <Route path="/" element={<Root />} >
-      <Route index element={ <Header pokemonData={pokemonData} setPokemonData={setPokemonData} nextPageURL={nextPageURL} setNextPageURL={setNextPageURL}/>} />
-      <Route path="/:pokemon" element={<PokemonDetail pokemonData={pokemonData}/>}/>
+      <Route index element={ <Header pokemonData={pokemonData} setPokemonData={setPokemonData} nextPageURL={nextPageURL} setNextPageURL={setNextPageURL} found={found} setFound={setFound}/>} />
+      <Route path="/:pokemon" element={<PokemonDetail pokemonData={pokemonData} found={found}/>}/>
     </Route>
     
     

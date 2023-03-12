@@ -2,7 +2,7 @@
     display: flex;
     flex-wrap: wrap;
     font-family: 'Roboto';
-    width: 1150px;
+    width: 100lh;
     margin: auto;
     
 }
@@ -104,6 +104,54 @@
 .normal{
     background-color: #A4ACAF;
     
+}
+
+.ground{
+    background: linear-gradient(#F7DE3F, #F7DE3F 50%, #AB9842, #AB9842 50%);
+}
+
+.fairy{
+    background-color: #FDB9E9;
+}
+
+.fighting{
+    background-color: #D56723;
+    color: white;
+}
+
+.psychic{
+    background-color: #F366B9;
+    color: white;
+}
+
+.electric{
+    background-color: #EED535;
+}
+
+.ice{
+    background-color: #51C4E7;
+}
+
+.rock{
+    background-color: #A38C21;
+}
+
+.ghost{
+    background-color: #7B62A3;
+    color: white;
+}
+
+.dragon{
+    background: linear-gradient(#53A4CF, #53A4CF 50%, #f16e57, #f16e57 50%);
+}
+
+.dark{
+    background-color: #707070;
+    color: white;
+}
+
+.steel{
+    background-color: #9EB7B8;
 }
 
 #load{

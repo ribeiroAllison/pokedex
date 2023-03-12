@@ -13,7 +13,7 @@ export default function(props) {
     }
 
     let paramsPokemonObj = props.pokemonData.filter(obj => obj.name === pokemon);
-    let targetPokemon = paramsPokemonObj[0];
+    let targetPokemon = paramsPokemonObj[0] ? paramsPokemonObj[0] : props.found
 
     return(
         <section className="detail-card">

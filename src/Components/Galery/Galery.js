@@ -34,12 +34,6 @@ export default function Galery (props) {
             load.removeChild(load.lastChild)
             button.style.display = 'block'
         }
-
-        const style = {
-            width: "300px",
-            margin: "auto"
-        }
-
     
     return(
         <main>
