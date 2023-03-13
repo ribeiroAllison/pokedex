@@ -55,22 +55,22 @@ useEffect(() => {
         navigate(`/error`)
     }
     
-    function searchPokemon() {
+    async function searchPokemon() {
         let id = document.getElementById("searchBox").value;
         const foundOnState = props.pokemonData.find(pokemon => pokemon.id.toString() === id || pokemon.name === id.toLowerCase())
         let foundOnApi;
-        catchPokemon()
+        await catchPokemon()
         foundOnApi = searchTarget.find(pokemon => pokemon.id.toString() === id || pokemon.name === id.toLowerCase())
         !foundOnApi && changeToggle()
         
         const foundPokemon = foundOnState ? foundOnState : foundOnApi;
         foundPokemon && props.setFound(foundPokemon)
-        goTo(foundPokemon.name)
+        // goTo(foundPokemon.name)
     }
 
-    function goToFoundPokemon () {
-        while(props.found === "none"){
-            searchPokemon()
+    async function goToFoundPokemon () {
+        while(!props.found){
+            await searchPokemon()
         }
         goTo(props.found.name)
     }
@@ -87,7 +87,7 @@ useEffect(() => {
                     <label for="searchBox">Name or Number</label>
                     <div id="input-ctn">
                         <input type="text" name="searchBox" id="searchBox" />
-                        <img alt= "research button" onClick={searchPokemon} src={require('./resources/input#search.png') }/>
+                        <img alt= "research button" onClick={goToFoundPokemon} src={require('./resources/input#search.png') }/>
                     </div>
                     
                     <h3>Use the Advanced Search to explore Pokémon by type, weakness, Ability, and more!</h3>

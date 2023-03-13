@@ -13,7 +13,7 @@ function App() {
 
   const [pokemonData, setPokemonData] = useState();
   const [nextPageURL, setNextPageURL] = useState('https://pokeapi.co/api/v2/pokemon');
-  const [found, setFound] = useState('none')
+  const [found, setFound] = useState()
 
   useEffect(() =>{
     async function pkmData(){
