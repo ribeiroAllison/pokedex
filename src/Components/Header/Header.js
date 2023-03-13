@@ -8,36 +8,18 @@ import { useState, useEffect } from "react";
 export default function Header (props){
 
     const [nextSearch, setNextSearch] = useState(props.nextPageURL)
-    const [searchTarget, setSearchTarget] = useState()
 
-    useEffect(() => {
-    
-        searchPkmData()
-        refreshNextPage()
-    }, [])
-
-
-    
-    
-    async function searchPkmData(){
-        let searchResult = await getApiInfo(nextSearch);
-        setSearchTarget(searchResult)
-        
-    }
-
-    const [shouldSearch, setShouldSearch] = useState(false);
-    useEffect(() => {
-        if (shouldSearch) {
-            searchPkmData();
-            setShouldSearch(false);
-        }
-        }, [shouldSearch]);
 
     async function refreshNextPage() {
         let nextPage = await getNextPageURL(nextSearch);
         setNextSearch(nextPage);
-        setShouldSearch(true); // Atualiza o estado para que a busca seja iniciada
+
     }
+
+    useEffect(() => {
+        refreshNextPage()
+    }, [])
+
 
 
     const navigate = useNavigate();
@@ -86,6 +68,7 @@ export default function Header (props){
         if (foundOnApi) {
             props.setFound(foundOnApi);
             goTo(foundOnApi.name);
+            setNextSearch(props.nextPageURL)
         } else {
             goToError();
         }
