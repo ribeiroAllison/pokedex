@@ -25,9 +25,18 @@ export default function Header (props){
         
     }
 
-    async function refreshNextPage(){
+    const [shouldSearch, setShouldSearch] = useState(false);
+    useEffect(() => {
+        if (shouldSearch) {
+            searchPkmData();
+            setShouldSearch(false);
+        }
+        }, [shouldSearch]);
+
+    async function refreshNextPage() {
         let nextPage = await getNextPageURL(nextSearch);
         setNextSearch(nextPage);
+        setShouldSearch(true); // Atualiza o estado para que a busca seja iniciada
     }
 
 
@@ -49,24 +58,37 @@ export default function Header (props){
         
     }
 
-    async function catchPokemon(){
+    async function catchPokemon() {
         let id = searchParam;
-        let foundOnState = props.pokemonData.find(pokemon => pokemon.id.toString() === id || pokemon.name === id.toLowerCase())
-        foundOnState && props.setFound(foundOnState)
-        let foundOnApi = false;
-        while(!props.found){
-            foundOnApi = searchTarget.find(pokemon => pokemon.id.toString() === id || pokemon.name === id.toLowerCase())
-            if(foundOnApi){
-                props.setFound(foundOnApi);
-            } else {
-                await refreshNextPage();
-                await searchPkmData();
-            }
-            
+        let foundOnState = props.pokemonData.find(
+            (pokemon) =>
+            pokemon.id.toString() === id || pokemon.name === id.toLowerCase()
+        );
+        if (foundOnState) {
+            props.setFound(foundOnState);
+            goTo(foundOnState.name);
+            return;
         }
 
-        props.found && goTo(props.found.name)
+        let foundOnApi = null;
+        let page = nextSearch;
+        while (!foundOnApi && page) {
+            const searchResult = await getApiInfo(page);
+            foundOnApi = searchResult.find(
+            (pokemon) =>
+                pokemon.id.toString() === id || pokemon.name === id.toLowerCase()
+            );
+            if (!foundOnApi) {
+            page = await getNextPageURL(page);
+            }
+        }
 
+        if (foundOnApi) {
+            props.setFound(foundOnApi);
+            goTo(foundOnApi.name);
+        } else {
+            goToError();
+        }
     }
 
 
