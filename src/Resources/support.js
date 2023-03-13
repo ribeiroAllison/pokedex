@@ -15,8 +15,6 @@ export default async function getApiInfo(url){
         };
         
 
-
-
     } catch(error){
         console.log(error)
     }
