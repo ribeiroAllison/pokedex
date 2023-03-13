@@ -2,25 +2,10 @@ import Galery from "../Galery/Galery"
 import "./Header.css"
 import getApiInfo, { getNextPageURL } from "../../Resources/support"
 import { useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 
 export default function Header (props){
-
-    const [nextSearch, setNextSearch] = useState(props.nextPageURL)
-
-
-    async function refreshNextPage() {
-        let nextPage = await getNextPageURL(nextSearch);
-        setNextSearch(nextPage);
-
-    }
-
-    useEffect(() => {
-        refreshNextPage()
-    }, [])
-
-
 
     const navigate = useNavigate();
 
@@ -53,7 +38,7 @@ export default function Header (props){
         }
 
         let foundOnApi = null;
-        let page = nextSearch;
+        let page = props.nextPageURL;
         while (!foundOnApi && page) {
             const searchResult = await getApiInfo(page);
             foundOnApi = searchResult.find(
@@ -68,12 +53,11 @@ export default function Header (props){
         if (foundOnApi) {
             props.setFound(foundOnApi);
             goTo(foundOnApi.name);
-            setNextSearch(props.nextPageURL)
+            page = props.nextPageURL;
         } else {
             goToError();
         }
     }
-
 
 
     return(
