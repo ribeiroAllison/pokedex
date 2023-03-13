@@ -1,70 +1,107 @@
-# Getting Started with Create React App
+# React Pokedex
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![alt screenshot of the program](/src/Resources/screenshot.jpg "Program screenshot")
 
-## Available Scripts
+## Table of contents
 
-In the project directory, you can run:
+- [Overview](#overview)
+  - [What is this?](#what-is-this)
+  - [The challenge](#the-challenge)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Continued development](#continued-development)
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Overview
 
-### `npm test`
+### What is this?
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+I've made this project to exercise using API inside a React.js app
 
-### `npm run build`
+I had made other projects using API concepts but never within React.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### The challenge
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Users should be able to:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- See details of any Pokemon they clicked on
+- Load more pokemon after they reach the bottom of the page
+- Search for pokemon by name or number (even if they were not previously loaded on screen)
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Links
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Finished project: [Pokédex!](https://pokedex-ribeiroallison.vercel.app/)
+- The API: [PokéAPI](https://pokeapi.co/)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## My process
 
-## Learn More
+### Built with
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- [React](https://reactjs.org/) - JS library
+- Route hooks (useEffect, useState, useNavigate, useParams)
+- Semantic HTML5 markup
+- CSS custom properties
+- Flexbox
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### What I learned
 
-### Code Splitting
+Well, this was a tough cookie...
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- How to **unwrap data** from Promise in React.
+- Manipulate state while using async functions.
+- Iterate thorugh an API pages and extract specific data from it.
+- Exhibit data adding to the displayed list one page at a time from the API.
+- How to better choose to store data, either in a State or plain old variable. 
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+#### Some code I'm pride of
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+This function is the heart of the search engine, it `took me 3 days` to finally come up with a version that works properly. I was having a really hard time to `correctly synchronize async functions, side effects, and loops` in a way that the function calls would be made in the correct order to deliver the expected results
 
-### Advanced Configuration
+```js
+async function catchPokemon() {
+        let id = searchParam;
+        let foundOnState = props.pokemonData.find(
+            (pokemon) =>
+            pokemon.id.toString() === id || pokemon.name === id.toLowerCase()
+        );
+        if (foundOnState) {
+            props.setFound(foundOnState);
+            goTo(foundOnState.name);
+            return;
+        }
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+        let foundOnApi = null;
+        let page = props.nextPageURL;
+        while (!foundOnApi && page) {
+            const searchResult = await getApiInfo(page);
+            foundOnApi = searchResult.find(
+            (pokemon) =>
+                pokemon.id.toString() === id || pokemon.name === id.toLowerCase()
+            );
+            if (!foundOnApi) {
+            page = await getNextPageURL(page);
+            }
+        }
 
-### Deployment
+        if (foundOnApi) {
+            props.setFound(foundOnApi);
+            goTo(foundOnApi.name);
+            page = props.nextPageURL;
+        } else {
+            goToError();
+        }
+    }
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Continued development
+
+Add the advanced search feature. Making it possible for the user to search not only by name or ID but also by Pokémon type, weaknesses, strengths, etc.
