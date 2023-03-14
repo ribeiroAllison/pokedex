@@ -5,6 +5,7 @@ import Root from '../Root/Root';
 import Header from '../Header/Header';
 import getApiInfo, {getNextPageURL} from "../../Resources/support"
 import PokemonDetail from '../PokemonDetail/PokemonDetail';
+import Error from '../Error/Error';
 
 
 
@@ -36,6 +37,7 @@ function App() {
     <Route path="/" element={<Root />} >
       <Route index element={ <Header pokemonData={pokemonData} setPokemonData={setPokemonData} nextPageURL={nextPageURL} setNextPageURL={setNextPageURL} found={found} setFound={setFound}/>} />
       <Route path="/:pokemon" element={<PokemonDetail pokemonData={pokemonData} found={found}/>}/>
+      <Route path="/error" element={<Error />}/>
     </Route>
     
     
