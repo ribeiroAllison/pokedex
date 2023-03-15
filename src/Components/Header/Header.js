@@ -74,7 +74,7 @@ export default function Header (props){
                         <img alt= "research button" onClick={catchPokemon} src={require('./resources/input#search.png') }/>
                     </div>
                     
-                    <h3>Use the Advanced Search to explore Pokémon by type, weakness, Ability, and more!</h3>
+                
                 </div>
                 <div id="greenBox">
                     <h2>Search for a Pokémon by name or using its National Pokédex number.</h2>
