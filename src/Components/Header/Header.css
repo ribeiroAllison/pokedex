@@ -41,6 +41,12 @@ header{
     width: 45px;
     height: 40px;
     margin-left: 20px;
+    border-radius: 10px;
+}
+
+#search-ctn img:hover{
+    opacity: 0.5;
+    cursor: pointer;
 }
 
 #input-ctn{
@@ -78,6 +84,7 @@ header{
     border-radius: 10px;
     display: flex;
     align-items: center;
+    width: 30%;
     
 }
 
@@ -104,5 +111,9 @@ header{
 
     #search-box{
         margin-bottom: 0;
+    }
+
+    #greenBox{
+        width: 100%;
     }
 }

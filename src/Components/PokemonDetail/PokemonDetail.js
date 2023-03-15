@@ -7,11 +7,6 @@ export default function(props) {
 
     let {pokemon} = useParams();
     
-    const navigate = useNavigate()
-
-    function goBack(){
-        return navigate(-1);
-    }
 
     let paramsPokemonObj = props.pokemonData.filter(obj => obj.name === pokemon);
     let targetPokemon = paramsPokemonObj[0] ? paramsPokemonObj[0] : props.found

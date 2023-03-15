@@ -3,6 +3,8 @@ import "./Header.css"
 import getApiInfo, { getNextPageURL } from "../../Resources/support"
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import loadingCircle from "../../Resources/loading-circle.gif"
+import searchButton from "../../Resources/input#search.png"
 
 
 export default function Header (props){
@@ -13,9 +15,6 @@ export default function Header (props){
         navigate(`/${id}`)
     }
 
-    function goToError() {
-        navigate(`/error`)
-    }
 
     const [searchParam, setSearchParam] = useState()
     
@@ -26,6 +25,16 @@ export default function Header (props){
     }
 
     async function catchPokemon() {
+
+
+        const button = document.getElementById("search-button");
+        button.setAttribute('src', loadingCircle)
+
+        // const inputCtn = document.getElementById("input-ctn");
+        // const loading = <img alt="loading" src={loadingCircle}/>
+        // inputCtn.appendChild(loading)
+
+
         let id = searchParam;
         let foundOnState = props.pokemonData.find(
             (pokemon) =>
@@ -55,8 +64,9 @@ export default function Header (props){
             goTo(foundOnApi.name);
             page = props.nextPageURL;
         } else {
-            goToError();
+            throw new Error();
         }
+        button.setAttribute('src', searchButton);
     }
 
 
@@ -71,7 +81,7 @@ export default function Header (props){
                     <label for="searchBox">Name or Number</label>
                     <div id="input-ctn">
                         <input type="text" name="searchBox" id="searchBox" onChange={handleChangeParam} />
-                        <img alt= "research button" onClick={catchPokemon} src={require('./resources/input#search.png') }/>
+                        <img alt= "research button" onClick={catchPokemon} src={require('./resources/input#search.png') } id="search-button"/>
                     </div>
                     
                 
