@@ -1,6 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom"
 import { capitalizeFirstLetter, correctIdFormat } from "../../Resources/support";
 import "./PokemonDetail.css"
+import GoBack from "../BackButton/BackButton";
 
 export default function(props) {
 
@@ -135,7 +136,7 @@ export default function(props) {
                 </div>
                 
             </div>
-            <button onClick={goBack} className="button">Back</button>
+            <GoBack />
         </section>
         
     )

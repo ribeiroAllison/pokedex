@@ -100,27 +100,6 @@
     text-align: center;
 }
 
-.button{
-    background-color: #30A7D7;
-    display: flex;
-    width: 200px;
-    height: 50px;
-    border: 4px solid rgb(5, 88, 84);
-    border-radius: 10px;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 10px;
-    text-decoration: none;
-    color:white;
-    margin-bottom: 40px;
-    font-size: 20px;
-}
-
-.button:hover{
-    cursor: pointer;
-    background-color: #30a8d7b0;
-    border: 4px solid rgba(5, 88, 84, 0.685);
-}
 
 
 #first-appears{

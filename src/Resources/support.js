@@ -1,4 +1,5 @@
 
+
 export default async function getApiInfo(url){
 
 
@@ -81,6 +82,8 @@ export async function getNextPageURL(url){
     
     return results
 }
+
+
 
 
 

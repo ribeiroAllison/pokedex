@@ -1,0 +1,17 @@
+#error{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+}
+
+#error img{
+    margin-bottom: 20px;
+}
+
+@media only screen and (max-width: 480px){
+    
+    #error img{
+        width: 350px;
+    }
+}
