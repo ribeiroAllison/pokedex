@@ -30,9 +30,6 @@ export default function Header (props){
         const button = document.getElementById("search-button");
         button.setAttribute('src', loadingCircle)
 
-        // const inputCtn = document.getElementById("input-ctn");
-        // const loading = <img alt="loading" src={loadingCircle}/>
-        // inputCtn.appendChild(loading)
 
 
         let id = searchParam;
