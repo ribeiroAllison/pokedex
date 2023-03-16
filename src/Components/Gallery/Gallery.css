@@ -1,4 +1,4 @@
-.galery-main{
+.gallery-main{
     display: flex;
     flex-wrap: wrap;
     font-family: 'Roboto';
@@ -166,8 +166,6 @@
     height: auto;
 }
 
-@media only screen and (max-width: 480px){
-    
-}
+
 
 

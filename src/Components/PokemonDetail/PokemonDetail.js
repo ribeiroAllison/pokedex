@@ -1,21 +1,29 @@
-import { useParams, useNavigate } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import { capitalizeFirstLetter, correctIdFormat } from "../../Resources/support";
 import "./PokemonDetail.css"
 import GoBack from "../BackButton/BackButton";
 
-export default function(props) {
+export default function PokemonDetail(props) {
 
     let {pokemon} = useParams();
     
-
+    /*This is used in case the user is navigating to pokemon details
+    screen by clicking in any card displayed at home screen.*/
     let paramsPokemonObj = props.pokemonData.filter(obj => obj.name === pokemon);
+
+    /* props.found is a state that stores a pokémon that matches the ID or name 
+    typed in input box of Header component. This pokémon object is found 
+    iterating through all the API pages.  The conditional bellow selects
+    between an object retrieved from pokemonData state (therefore displayed in main screen)
+    or from API search (not previously display).
+    */
     let targetPokemon = paramsPokemonObj[0] ? paramsPokemonObj[0] : props.found
 
     return(
         <section className="detail-card">
             <h2>{capitalizeFirstLetter(targetPokemon.name) + " " + correctIdFormat(targetPokemon)} </h2>
             <div className="pokemon-detail">
-                <img src={targetPokemon.sprites.other['official-artwork'].front_default}/>
+                <img alt="official artwork" src={targetPokemon.sprites.other['official-artwork'].front_default}/>
                 <div>
                     <div className="info-card">
                         <div className="column-1 column">
@@ -59,17 +67,17 @@ export default function(props) {
 
                     <div className="art-imgs">
                         <figure>
-                            <img src={targetPokemon.sprites.front_default} />
+                            <img alt="pokémon front" src={targetPokemon.sprites.front_default} />
                             <figcaption>Default</figcaption>
                         </figure>
                         <figure>
-                            <img src={targetPokemon.sprites.back_default}/>
+                            <img alt="pokémon back" src={targetPokemon.sprites.back_default}/>
                             <figcaption>Default</figcaption>
                         </figure>
 
                         {targetPokemon.sprites.front_female && 
                             <figure>
-                                <img src={targetPokemon.sprites.front_female}/>
+                                <img alt="pokémon front female" src={targetPokemon.sprites.front_female}/>
                                 <figcaption>♀️ Version</figcaption>
                             </figure>
                         
@@ -77,7 +85,7 @@ export default function(props) {
                         
                         {targetPokemon.sprites.back_female &&
                             <figure>
-                                <img src={targetPokemon.sprites.back_female}/>
+                                <img alt="pokémon back female" src={targetPokemon.sprites.back_female}/>
                                 <figcaption>♀️ Version</figcaption>
                             </figure>
                         
@@ -85,28 +93,28 @@ export default function(props) {
 
                         {targetPokemon.sprites.front_shiny &&
                             <figure>
-                                <img src={targetPokemon.sprites.front_shiny}/>
+                                <img alt="pokémon front shiny" src={targetPokemon.sprites.front_shiny}/>
                                 <figcaption>Shiny</figcaption>
                             </figure>
                         }
 
                         { targetPokemon.sprites.back_shiny &&
                             <figure>
-                                <img src={targetPokemon.sprites.back_shiny}/>
+                                <img alt="pokémon back shiny" src={targetPokemon.sprites.back_shiny}/>
                                 <figcaption>Shiny</figcaption>
                             </figure>
                         }
 
                         { targetPokemon.sprites.front_shiny_female &&
                             <figure>
-                                <img src={targetPokemon.sprites.front_shiny_female}/>
+                                <img alt="pokémon front shiny female" src={targetPokemon.sprites.front_shiny_female}/>
                                 <figcaption>♀️ Shiny</figcaption>
                             </figure>
                         }
                         
                         { targetPokemon.sprites.back_shiny_female &&
                             <figure>
-                                <img src={targetPokemon.sprites.back_shiny_female}/>
+                                <img alt="pokémon back shiny female" src={targetPokemon.sprites.back_shiny_female}/>
                                 <figcaption>♀️ Shiny</figcaption>
                             </figure>
                         }
@@ -115,14 +123,14 @@ export default function(props) {
                 <div className="alternative-art">
                     { targetPokemon.sprites.other.dream_world.front_default &&
                         <figure>
-                            <img src={targetPokemon.sprites.other.dream_world.front_default}/>
+                            <img alt="pokémon dream world version" src={targetPokemon.sprites.other.dream_world.front_default}/>
                             <figcaption> Dream World </figcaption>
                         </figure>
                     }
 
                     { targetPokemon.sprites.other['official-artwork'].front_shiny &&
                         <figure>
-                            <img src={targetPokemon.sprites.other['official-artwork'].front_shiny}/>
+                            <img alt="pokémon official shiny version" src={targetPokemon.sprites.other['official-artwork'].front_shiny}/>
                             <figcaption> Official Shiny Art</figcaption>
                         </figure>
                     }

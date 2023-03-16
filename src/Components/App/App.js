@@ -12,9 +12,9 @@ import Error from '../Error/Error';
 
 function App() {
 
-  const [pokemonData, setPokemonData] = useState();
-  const [nextPageURL, setNextPageURL] = useState('https://pokeapi.co/api/v2/pokemon');
-  const [found, setFound] = useState()
+  const [pokemonData, setPokemonData] = useState(); // This will store all pokemon objects that are displayed in main page
+  const [nextPageURL, setNextPageURL] = useState('https://pokeapi.co/api/v2/pokemon'); // Get and set the next page of data from API
+  const [found, setFound] = useState(); // Store the returned pokemon from catchPokemon() of Header.js
 
   useEffect(() =>{
     async function pkmData(){
@@ -37,7 +37,7 @@ function App() {
     <Route path="/" element={<Root />} errorElement={<Error />} >
       <Route index element={ <Header pokemonData={pokemonData} setPokemonData={setPokemonData} nextPageURL={nextPageURL} setNextPageURL={setNextPageURL} found={found} setFound={setFound}/>} />
       <Route path="/:pokemon" element={<PokemonDetail pokemonData={pokemonData} found={found}/>}/>
-      <Route path="/error" element={<Error />}/>
+      
     </Route>
     
     

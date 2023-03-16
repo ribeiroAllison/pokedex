@@ -1,27 +1,39 @@
 import { capitalizeFirstLetter, correctIdFormat } from "../../Resources/support";
 import { Link } from "react-router-dom";
 import getApiInfo, { getNextPageURL } from "../../Resources/support"
-import "./Galery.css"
+import "./Gallery.css"
 import srcPath from "../../Resources/loading.gif"
 
 
-export default function Galery (props) {
+export default function Gallery (props) {
 
 
-    
+        /**
+         * This function pushes a page of data from the API to the
+         * pokemonData state array every time it is called, and consequently
+         * these new pokemon fetched are displayed in main screen.
+         */
         async function refreshPkmData(){
             let newList = props.pokemonData;
             let pokeData = await getApiInfo(props.nextPageURL);
-            for(let index of pokeData){
-                newList.push(index)
+            for(let returnedObject of pokeData){
+                newList.push(returnedObject)
             }
             props.setPokemonData(newList);
         }
+
+        /**
+         * Set next API data page to be added to pokemonData state
+         */
         async function refreshNextPage(){
             let nextPage = await getNextPageURL(props.nextPageURL);
             props.setNextPageURL(nextPage)
         }
 
+        /**
+         * Function to request more pokémon to be displayed on screen
+         * and display a loading screen while information is being fetched
+         */
         async function execute(){
             const load = document.getElementById("load");
             const button = document.getElementById("load-button")
@@ -37,7 +49,7 @@ export default function Galery (props) {
     
     return(
         <main>
-            <div className="galery-main">
+            <div className="gallery-main">
                 
                 
                 {
